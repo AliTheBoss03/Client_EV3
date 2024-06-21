@@ -1,34 +1,38 @@
-#!/usr/bin/env python3
+#!/usr/bin/env pybricks-micropython
 
 import socket
-from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B, OUTPUT_C, SpeedPercent
-from ev3dev2.sound import Sound
+from pybricks.hubs import EV3Brick
+from pybricks.ev3devices import Motor
+from pybricks.parameters import Port, Stop, Direction
+from pybricks.tools import wait
 
-# Initialize motors and sound
-motor_left = LargeMotor(OUTPUT_A)
-motor_right = LargeMotor(OUTPUT_B)
-grab_motor = LargeMotor(OUTPUT_C)
-sound = Sound()
+# Initialize EV3 brick
+ev3 = EV3Brick()
+
+# Initialize motors
+motor_left = Motor(Port.A)
+motor_right = Motor(Port.B)
+grab_motor = Motor(Port.C)
 
 def handle_command(command):
     if command == 'move_forward':
-        motor_left.on(SpeedPercent(50))
-        motor_right.on(SpeedPercent(50))
+        motor_left.run(500)
+        motor_right.run(500)
     elif command == 'stop':
-        motor_left.off()
-        motor_right.off()
+        motor_left.stop()
+        motor_right.stop()
     elif command == 'turn_left':
-        motor_left.on(SpeedPercent(-25))
-        motor_right.on(SpeedPercent(25))
+        motor_left.run(-250)
+        motor_right.run(250)
     elif command == 'turn_right':
-        motor_left.on(SpeedPercent(25))
-        motor_right.on(SpeedPercent(-25))
+        motor_left.run(250)
+        motor_right.run(-250)
     elif command == 'grab':
-        grab_motor.on_for_seconds(SpeedPercent(50), 2)
-        motor_left.off()
-        motor_right.off()
+        grab_motor.run_time(500, 2000)
+        motor_left.stop()
+        motor_right.stop()
     elif command == 'beep':
-        sound.beep()
+        ev3.speaker.beep()
     # Add more commands as needed
 
 def main():

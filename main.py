@@ -22,15 +22,15 @@ def handle_command(command):
         motor_left.stop()
         motor_right.stop()
     elif command == 'turn_left':
-        motor_left.run(-250)
-        motor_right.run(250)
+        motor_left.run(-100)
+        motor_right.run(100)
     elif command == 'turn_right':
-        motor_left.run(250)
-        motor_right.run(-250)
+        motor_left.run(100)
+        motor_right.run(-100)
     elif command == 'grab':
         grab_motor.run_time(500, 2000)
-        motor_left.stop()
-        motor_right.stop()
+        motor_left.run(300)
+        motor_right.run(300)
     elif command == 'beep':
         ev3.speaker.beep()
     # Add more commands as needed

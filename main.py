@@ -27,15 +27,20 @@ def handle_command(command):
     elif command == 'turn_right':
         motor_left.run(100)
         motor_right.run(-100)
-    elif command == 'grab':
-        grab_motor.run_time(500, 2000)
-        motor_left.run(300)
-        motor_right.run(300)
+    elif command == 'move_to_goal':
+        motor_left.run(500)
+        motor_right.run(500)
+        wait(5000)  # Run towards the goal for 5 seconds (adjust as necessary)
+        motor_left.stop()
+        motor_right.stop()
     elif command == 'beep':
         ev3.speaker.beep()
     # Add more commands as needed
 
 def main():
+    # Start the grabber motor at 1000 RPM continuously
+    grab_motor.run(-1000)
+    
     ip = '0.0.0.0'
     port = 5000
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

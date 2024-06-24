@@ -16,11 +16,11 @@ grab_motor = Motor(Port.C)
 
 def handle_command(command):
     if command == 'move_backward':
-        motor_left.run(-250)
-        motor_right.run(-250)
+        motor_left.run(-200)
+        motor_right.run(-200)
     if command == 'move_forward':
-        motor_left.run(250)
-        motor_right.run(250)
+        motor_left.run(200)
+        motor_right.run(200)
     elif command == 'stop':
         motor_left.stop()
         motor_right.stop()

@@ -16,11 +16,11 @@ grab_motor = Motor(Port.C)
 
 def handle_command(command):
     if command == 'move_backward':
-        motor_left.run(-200)
-        motor_right.run(-200)
-    if command == 'move_forward':
-        motor_left.run(200)
-        motor_right.run(200)
+        motor_left.run(-300)
+        motor_right.run(-300)
+    elif command == 'move_forward':
+        motor_left.run(300)
+        motor_right.run(300)
     elif command == 'stop':
         motor_left.stop()
         motor_right.stop()
@@ -31,9 +31,9 @@ def handle_command(command):
         motor_left.run(150)
         motor_right.run(-150)
     elif command == 'move_to_goal':
-        motor_left.run(200)
-        motor_right.run(200)
-        wait(5000)  # Run towards the goal for 5 seconds (adjust as necessary)
+        motor_left.run(300)
+        motor_right.run(300)
+        wait(30000)  # Run towards the goal for 30 seconds (adjust as necessary)
         motor_left.stop()
         motor_right.stop()
     elif command == 'beep':
@@ -42,14 +42,14 @@ def handle_command(command):
         # Code to move to the specific point
         motor_left.run(200)
         motor_right.run(200)
-        wait(5000)  # Adjust this duration to reach the point
+        wait(20000)  # Adjust this duration to reach the point
         motor_left.stop()
         motor_right.stop()
     elif command == 'align_to_target_point':
         # Code to align the robot to the target point
         motor_left.run(100)
         motor_right.run(-100)
-        wait(1000)  # Adjust this duration to align the robot
+        wait(10000)  # Adjust this duration to align the robot
         motor_left.stop()
         motor_right.stop()
     elif command == 'start_grabber_reverse':

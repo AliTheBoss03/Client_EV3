@@ -33,7 +33,7 @@ def handle_command(command):
     elif command == 'move_to_goal':
         motor_left.run(300)
         motor_right.run(300)
-        wait(30000)  # Run towards the goal for 30 seconds (adjust as necessary)
+        wait(5000)  # Run towards the goal for 5 seconds (adjust as necessary)
         motor_left.stop()
         motor_right.stop()
     elif command == 'beep':
